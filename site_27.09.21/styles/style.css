@@ -1,0 +1,33 @@
+body{
+    background-image: url("../images/back.jpg");
+}
+h1{
+    font-size: 250%;
+}
+p{
+    color: midnightblue;
+    font-size: 200%;
+}
+a{
+    display: inline-block;
+    margin-right: 1%;
+}
+.photo{
+    margin-top: 11%;
+    float: left;
+    width: 35%;
+}
+.name{
+    text-align: center;
+}
+.pad{
+    padding: 30px;
+}
+.about{
+    float: left;
+    width: 30%;
+}
+.liked{
+    float: right;
+    width: 25%;
+}
