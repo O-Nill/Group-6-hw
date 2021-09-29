@@ -1,0 +1,57 @@
+body{
+    background-image: url("../images/back.jpg");
+}
+.myTable tr td{
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+.myTable{
+    padding: 1%;
+    margin: auto;
+    width: 70%;
+}
+caption{
+    font-size: 250%;
+    font-weight: bold;
+}
+header a{
+    display: inline-block;
+    margin-right: 1%;
+}
+.leftPart a{
+    font-weight: bold;
+    color: black;
+    font-size: 200%;
+    text-decoration: none
+}
+.rightPart a{
+    font-weight: bold;
+    color: black;
+    font-size: 200%;
+    text-decoration: none
+}
+p{
+    margin-top: 16%;
+    font-weight: bold;
+}
+h1{
+    font-size: 250%;
+}
+.num{
+    font-weight: bold;
+}
+.leftPart{
+    float: left;
+    width: 50%;
+}
+.rightPart{
+    text-align: right;
+    float: right;
+    width: 50%;
+}
+td{
+    background-color: #f6e235;
+}
+.td2{
+    background-color: #96cedc;
+}
