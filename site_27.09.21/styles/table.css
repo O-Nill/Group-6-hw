@@ -14,10 +14,22 @@ caption{
     font-size: 250%;
     font-weight: bold;
 }
-header a{
+a{
+    text-decoration: none;
+}
+.flex_menu{
+    display: flex;
+    justify-content: flex-end;
+}
+.menu_item{
+    margin: 2.5% 1% 2% 0;
+    font-size: 250%;
+    font-weight: bold;
+}
+/*header a{
     display: inline-block;
     margin-right: 1%;
-}
+}*/
 .leftPart a{
     font-weight: bold;
     color: black;
@@ -34,9 +46,9 @@ p{
     margin-top: 16%;
     font-weight: bold;
 }
-h1{
+/*h1{
     font-size: 250%;
-}
+}*/
 .num{
     font-weight: bold;
 }
