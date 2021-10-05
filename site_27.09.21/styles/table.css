@@ -67,3 +67,18 @@ td{
 .td2{
     background-color: #96cedc;
 }
+@media screen and (max-width: 1500px){ /*Универсальный размер экрана для масштабирования таблицы*/
+    .menu_item{
+        font-size: 100%;
+    }
+    caption{
+        font-size: 120%;
+    }
+    .myTable{
+        width: 500px;
+    }
+    p{
+        margin-top: 40%;
+        font-weight: bold;
+    }
+}

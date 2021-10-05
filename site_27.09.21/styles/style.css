@@ -51,6 +51,9 @@ p{
     font-weight: bold;
     font-size: x-large;
 }
+.titleAd{
+    display: none;
+}
 .titles{
     display: flex;
     width: 100%;
@@ -127,4 +130,84 @@ p{
 }
 .icn4{
     background-image: url(../images/icons/lulu2.jpg);
+}
+
+@media screen and (max-width: 811px){ /*Экран iPad 810x1080*/
+    p{
+        color: midnightblue;
+        font-size: 100%;
+    }
+    .icn{
+        height: 75%;
+        margin: 2%;
+    }
+    .flex{
+        width: 100%;
+    }
+    .part{
+        position: unset;
+        width: 100%;
+    }
+   .titles{
+       display: none;
+   }
+   .titleAd{
+       display: block;
+       width: 100%;
+       padding-top: 1%;
+       padding-bottom: 0.5%;
+       text-align: center;
+       font-weight: bold;
+       font-size: x-large;
+   }
+    .first_title{
+        margin-top: 55%;
+    }
+    .photo{
+        margin-top: 4%;
+        float: none;
+        width: 100%;
+    }
+    .about{
+        float: left;
+        width: 38%;
+    }
+    .liked{
+        float: right;
+        width: 35%;
+    }
+}
+@media screen and (max-width: 413px){ /* Экран Galaxy S20 (Ultra) Linux 360x800 (412*915) */
+    .menu_item{
+        font-size: 100%;
+    }
+    .name{
+        font-size: 150%;
+    }
+    .pad{
+        padding: 0px;
+    }
+    .about{
+        float: none;
+        width: 100%;
+    }
+    .liked{
+        float: none;
+        width: 100%;
+    }
+    .first_title{
+        margin-top: 0%;
+    }
+    .titleAd{
+        font-size: 120%;
+    }
+    .item:hover {
+        flex: 0.1 0.1 100%;
+    }
+    .icn{
+        height: 45%;
+    }
+    .icon{
+        height: 130px;
+    }
 }
