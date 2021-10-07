@@ -10,7 +10,7 @@
     <section class="flex_menu">
         <!--<a href="index.html"><h1>Главная</h1></a>
         <a href="images/screen.png"><h1>Скрин</h1></a>-->
-        <div class="menu_item"><a href="index.html">Главная</a></div>
+        <div class="menu_item"><a href="index.php">Главная</a></div>
         <div class="menu_item"><a href="images/screen.png">Скрин</a></div>
     </section>
 </header>
