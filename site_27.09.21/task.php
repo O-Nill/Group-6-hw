@@ -19,7 +19,6 @@ $time = (int)"$d[hours]";
         <a href="images/my_view.png"><h1>Скрин</h1></a>-->
         <div class="menu_item"><a href="index.php">Главная</a></div>
         <div class="menu_item"><a href="table.php">Таблица</a></div>
-        <div class="menu_item"><a href="images/my_view.png">Скрин</a></div>
     </section>
 </header>
 <main class="menu_item">

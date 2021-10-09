@@ -12,6 +12,7 @@
         <a href="images/my_view.png"><h1>Скрин</h1></a>-->
         <div class="menu_item"><a href="table.php">Таблица</a></div>
         <div class="menu_item"><a href="task.php">Задача PHP</a></div>
+        <div class="menu_item"><a href="arrays.php">Массивы</a></div>
         <div class="menu_item"><a href="images/my_view.png">Скрин</a></div>
     </section>
 </header>
