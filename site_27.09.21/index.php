@@ -5,30 +5,46 @@
     $comment = 'Мне понравились курсы от Факт. Они позволяют в короткие сроки сдать экзамен по Битрикс,
  а значит получить достойную работу в компании. Преподаются курсы с большим количеством примеров и хорошим
  вовлечением учащихся)';
-    $abOut = "<font color = blue>".mb_substr($about, 0,mb_strpos($about, '.')+1)."</font>".
-        mb_substr($about, mb_strpos($about, '.')+1);
-    $i = 0;
-    $comOut = "";
-    $vowels  = ['а', 'о', 'у', 'э', 'ы', 'я', 'ё', 'ю', 'е', 'и', 'А', 'О', 'У', 'Э', 'Ы', 'Я', 'Ё', 'Ю', 'Е', 'И'];
-    foreach (explode(' ', $comment) as $value) {
-        $i++;
-        if ($i % 2 !== 0) {
-            $comOut .= "<font color = blue>".$value.' '."</font>";
-        }
-        else {
-            $comOut .= "<font color = #663399>".$value.' '."</font>";
-        }
-    }
-    $result = 0;
     $text = $about.' '.$comment;
-    for ($i = 0; $i < count($vowels); $i++) {
-        $result += mb_substr_count($text, $vowels[$i]);
-    }
     $strBirthday = '1990-07-16';
-    $strTime = date("Y-m-d");
-    $birthday = date_create($strBirthday);
-    $time = date_create($strTime);
-    $interval = date_diff($birthday, $time);
+    function firstPhrCol($about)
+    {
+        return "<font color = blue>" . mb_substr($about, 0, mb_strpos($about, '.') + 1) . "</font>" .
+            mb_substr($about, mb_strpos($about, '.') + 1);
+    }
+    function colWords($comment)
+    {
+        $i = 0;
+        $comOut = "";
+        foreach (explode(' ', $comment) as $value) {
+            $i++;
+            if ($i % 2 !== 0) {
+                $comOut .= "<font color = blue>" . $value . ' ' . "</font>";
+            } else {
+                $comOut .= "<font color = #663399>" . $value . ' ' . "</font>";
+            }
+        }
+        return $comOut;
+    }
+    function countVowels($text)
+    {
+        $vowels = ['а', 'о', 'у', 'э', 'ы', 'я', 'ё', 'ю', 'е', 'и', 'А', 'О', 'У', 'Э', 'Ы', 'Я', 'Ё', 'Ю', 'Е', 'И'];
+        $result = 0;
+        for ($i = 0; $i < count($vowels); $i++) {
+            $result += mb_substr_count($text, $vowels[$i]);
+        }
+        return $result;
+    }
+    function diffDates($strBirthday)
+    {
+        $strTime = date("Y-m-d");
+        $birthday = date_create($strBirthday);
+        $time = date_create($strTime);
+        $interval = date_diff($birthday, $time);
+        return 'Дата рождения: '.$strBirthday."<br>".
+        'Текущая дата: '.$strTime."<br>".
+        'Количество дней между датами: '.$interval->format('%a');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +61,7 @@
         <div class="menu_item"><a href="table.php">Таблица</a></div>
         <div class="menu_item"><a href="task.php">Задача PHP</a></div>
         <div class="menu_item"><a href="arrays.php">Массивы</a></div>
-        <div class="menu_item"><a href="images/tasks4_5.jpg">Задачи 4, 5</a></div>
+        <div class="menu_item"><a href="images/fibonacci.png">Фибоначчи</a></div>
     </section>
 </header>
 <main>
@@ -53,12 +69,12 @@
     <h1 class="name">Румянцев Павел</h1>
     <p class="about pad">
         <?
-            echo $abOut;
+            echo firstPhrCol($about);
         ?>
     </p>
     <p class="liked pad">
         <?
-            echo $comOut;
+            echo colWords($comment);
         ?>
     </p>
     <section class="titles">
@@ -132,11 +148,9 @@
 </main>
 <footer>
     <?
-        echo 'Количество гласных букв на странице: '.$result."<br>";
-        echo 'Количество слов на странице: '.(mb_substr_count($text, ' ')+1)."<br>";
-        echo 'Дата рождения: '.$strBirthday."<br>";
-        echo 'Текущая дата: '.$strTime."<br>";
-        echo 'Количество дней между датами: '.$interval->format('%a');
+        echo 'Количество гласных букв на странице: '.countVowels($text)."<br>".
+            'Количество слов на странице: '.(mb_substr_count($text, ' ')+1)."<br>".
+            diffDates($strBirthday);
     ?>
 </footer>
 </body>
