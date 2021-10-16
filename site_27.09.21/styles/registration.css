@@ -1,0 +1,25 @@
+body{
+    background-image: url("../images/back.jpg");
+}
+a{
+    text-decoration: none;
+}
+.flex_menu{
+    display: flex;
+    justify-content: flex-end;
+}
+.menu_item{
+    margin: 2.5% 1% 0% 0;
+    font-size: 250%;
+    font-weight: bold;
+}
+.authorization_item{
+    margin: 0.5% 1% 2% 0;
+    font-size: 150%;
+    font-weight: bold;
+}
+p{
+    color: midnightblue;
+    font-size: 200%;
+    margin-left: 43%;
+}

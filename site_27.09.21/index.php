@@ -63,6 +63,9 @@
         <div class="menu_item"><a href="arrays.php">Массивы</a></div>
         <div class="menu_item"><a href="images/fibonacci.png">Фибоначчи</a></div>
     </section>
+    <div class="flex_menu">
+        <div class="authorization_item"><a href="registration.php">Форма авторизиции</a></div>
+    </div>
 </header>
 <main>
     <div class="photo"><img src="images/me.png" title="It's not me)" width="100%"  alt="Photo"></div>
