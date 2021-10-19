@@ -3,6 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/mail.css">
+<?
+    session_start();
+    if (isset($_SESSION['color'])){
+        switch ($_SESSION['color']){
+            case 'blue':
+                echo "<link rel=\"stylesheet\" href=\"styles/background/back1.css\">";
+                break;
+            case 'aquamarine':
+                echo "<link rel=\"stylesheet\" href=\"styles/background/back2.css\">";
+                break;
+            case 'plum':
+                echo "<link rel=\"stylesheet\" href=\"styles/background/back3.css\">";
+                break;
+            case 'default':
+                echo "<link rel=\"stylesheet\" href=\"styles/background/default.css\">";
+                break;
+        }
+    }
+    ?>
     <title>Отправка письма</title>
 </head>
 <body>
@@ -18,6 +37,9 @@
     </div>
 </header>
 <?
+    if ($_GET){
+        $_SESSION['id'] = $_GET['id'];
+    }
     $filename = './login.txt';
     if (file_exists($filename)) {
         $login = file_get_contents($filename);

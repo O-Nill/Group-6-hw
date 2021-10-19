@@ -51,6 +51,28 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/style.css">
+    <?
+        session_start();
+        if (isset($_POST['color_form'])) {
+            $_SESSION['color'] = $_POST['color_form'];
+        }
+        if (isset($_SESSION['color'])){
+            switch ($_SESSION['color']){
+                case 'blue':
+                    echo "<link rel=\"stylesheet\" href=\"styles/background/back1.css\">";
+                    break;
+                case 'aquamarine':
+                    echo "<link rel=\"stylesheet\" href=\"styles/background/back2.css\">";
+                    break;
+                case 'plum':
+                    echo "<link rel=\"stylesheet\" href=\"styles/background/back3.css\">";
+                    break;
+                case 'default':
+                    echo "<link rel=\"stylesheet\" href=\"styles/background/default.css\">";
+                    break;
+            }
+        }
+    ?>
     <title>О себе</title>
 </head>
 <body>
@@ -63,6 +85,15 @@
         <div class="menu_item"><a href="arrays.php">Массивы</a></div>
         <div class="menu_item"><a href="images/fibonacci.png">Фибоначчи</a></div>
     </section>
+    <form method="POST">
+        <select name="color_form">
+            <option value=blue>Светло-лазурный</option>
+            <option value=aquamarine>Аквамарин</option>
+            <option value=plum>Сливовый</option>
+            <option value=default>По умолчанию</option>
+        </select>
+        <input type="submit" value="Установить цвет">
+    </form>
     <div class="flex_menu">
         <div class="authorization_item"><a href="registration.php">Форма авторизиции</a></div>
     </div>

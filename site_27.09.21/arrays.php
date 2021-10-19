@@ -3,6 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/arrays.css">
+<?
+    session_start();
+    if (isset($_SESSION['color'])){
+        switch ($_SESSION['color']){
+            case 'blue':
+                echo "<link rel=\"stylesheet\" href=\"styles/background/back1.css\">";
+                break;
+            case 'aquamarine':
+                echo "<link rel=\"stylesheet\" href=\"styles/background/back2.css\">";
+                break;
+            case 'plum':
+                echo "<link rel=\"stylesheet\" href=\"styles/background/back3.css\">";
+                break;
+            case 'default':
+                echo "<link rel=\"stylesheet\" href=\"styles/background/default.css\">";
+                break;
+        }
+    }
+    ?>
     <title>Массивы</title>
 </head>
 <body>
@@ -17,6 +36,9 @@
 <main>
     <h1>Задание №1.</h1>
         <?
+            if ($_GET){
+                $_SESSION['id'] = $_GET['id'];
+            }
             for($i=0; $i<10; $i++){
                 $arr[]=rand(0, 99);
                 if ($arr[$i] % 2 == 0){
