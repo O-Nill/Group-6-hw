@@ -37,34 +37,57 @@
     </div>
 </header>
 <?
-    function correct_data($filename, $pass, $login, $password)
+    $hostname = 'localhost'; // ВАЖНО
+    $username = 'Max'; // Введите ваши данные для подключения к БД
+    $password = '0000';
+    $dbname = 'authorization_db'; // Создайте БД - authorization_db, либо впишите свою БД и
+        // импортируйте таблицу authorization.sql в PHPMyAdmin
+    $db_connect = mysqli_connect($hostname, $username, $password, $dbname);
+    mysqli_set_charset($db_connect, 'utf8');
+
+    function correct_data($db_connect, $login, $password)
     {
-        if (file_exists($filename)) {
+        // $pass - tо что записываем в файл $filename
+        // $pass = "$login, ".md5($password).', ';
+        /*if (file_exists($filename)) {
             $pass = file_get_contents($filename);
         } else {
             file_put_contents($filename, '');
         }
-        $var_pass = explode(', ', $pass);
+        $var_pass = explode(', ', $pass);*/
+        $select = mysqli_query($db_connect, "SELECT * FROM `authorization`");
+        $arr_select = mysqli_fetch_all($select, MYSQLI_ASSOC);
         $log = 0;
-        for ($i = 0; $i < count($var_pass) - 1; $i += 2) {
-            if ($var_pass[$i] == $login && $var_pass[$i + 1] == md5($password)) {
+        foreach ($arr_select as $value) {
+            if ($value['login'] == $login && $value['password'] == md5($password)) {
                 $log = 1;
             }
         }
+        /*for ($i = 0; $i < count($var_pass) - 1; $i += 2) {
+            if ($var_pass[$i] == $login && $var_pass[$i + 1] == md5($password)) {
+                $log = 1;
+            }
+        }*/
         return $log;
     }
     $links = '';
-    $pass = '';
-    $filename = './pass.txt';
+    //$pass = '';
+    //$filename = './pass.txt';
     if(count($_POST)>0) {
         $login = trim($_POST['login']);
         $password = trim($_POST['password']);
-        if (!($login == '' || $password == '') && $_POST['button']=='1' && !correct_data($filename, $pass, $login, $password)) {
+        if (!($login == '' || $password == '') && $_POST['button']=='1' && !correct_data($db_connect, $login, $password)) { //pass filename
             echo "<p>Данные зарегестрированы!</p>";
-            $pass = "$login, ".md5($password).', ';
-            file_put_contents($filename, $pass, FILE_APPEND);
+            $md_pass = md5($password);
+            $insert = mysqli_query($db_connect,
+                "INSERT INTO `authorization`(`user_id`, `login`, `password`) VALUES (Null, '$login', '$md_pass');");
+            if (!$insert) {
+                echo "<p>Ошибка внесения данных в БД!</p>";
+            }
+           /* $pass = "$login, ".md5($password).', ';
+            file_put_contents($filename, $pass, FILE_APPEND);*/
         }
-        elseif($_POST['button']=='1' && correct_data($filename, $pass, $login, $password)){
+        elseif($_POST['button']=='1' && correct_data($db_connect, $login, $password)){//pass filename
             echo "<p>Такой пользователь <br>уже существует!</p>";
         }
         if($login == '' || $password == '')
@@ -72,7 +95,7 @@
             echo "<p>Не заполнен пароль <br>или логин!</p>";
         }
         else{
-            $log = correct_data($filename, $pass, $login, $password);
+            $log = correct_data($db_connect, $login, $password);//pass filename
             if ($_POST['button']=='0') {
                 if ($log) {
                     if (isset($_SESSION['id'])){

@@ -83,7 +83,8 @@
         <div class="menu_item"><a href="table.php">Таблица</a></div>
         <div class="menu_item"><a href="task.php">Задача PHP</a></div>
         <div class="menu_item"><a href="arrays.php">Массивы</a></div>
-        <div class="menu_item"><a href="images/fibonacci.png">Фибоначчи</a></div>
+        <div class="menu_item"><a href="images/add_foreign_key.png">Внешний ключ</a></div>
+        <div class="menu_item"><a href="authorization.sql">БД</a></div>
     </section>
     <form method="POST">
         <select name="color_form">
