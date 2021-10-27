@@ -77,7 +77,7 @@
 </head>
 <body>
 <header>
-    <section class="flex_menu">
+    <div class="flex_menu">
         <!--<a href="table.html"><h1>Таблица</h1></a>
         <a href="images/my_view.png"><h1>Скрин</h1></a>-->
         <div class="menu_item"><a href="table.php">Таблица</a></div>
@@ -85,7 +85,7 @@
         <div class="menu_item"><a href="arrays.php">Массивы</a></div>
         <div class="menu_item"><a href="images/add_foreign_key.png">Внешний ключ</a></div>
         <div class="menu_item"><a href="authorization.sql">БД</a></div>
-    </section>
+    </div>
     <form method="POST">
         <select name="color_form">
             <option value=blue>Светло-лазурный</option>
@@ -100,7 +100,7 @@
     </div>
 </header>
 <main>
-    <div class="photo"><img src="images/me.png" title="It's not me)" width="100%"  alt="Photo"></div>
+    <div class="photo"><img src="images/me.png" title="It's not me)" alt="Photo"></div>
     <h1 class="name">Румянцев Павел</h1>
     <p class="about pad">
         <?
@@ -112,14 +112,14 @@
             echo colWords($comment);
         ?>
     </p>
-    <section class="titles">
+    <div class="titles">
     <div class="title">Любимые животные из YouTube</div>
     <div class="title">YouTube каналы с данными животными</div>
-    </section>
-    <section class="parts">
+    </div>
+    <div class="parts">
         <div class="titleAd first_title">Любимые животные из YouTube</div>
         <div>
-            <section class="flex">
+            <div class="flex">
                 <div class="item">
                     <div class="img img1">
                     </div>
@@ -144,11 +144,11 @@
                     <div class="text">LuLu (RuRu)
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
         <div class="part">
             <div class="titleAd">YouTube каналы с данными животными</div>
-            <section class="grid">
+            <div class="grid">
                 <div class="icon right">
                     <div class="icn icn1">
                     </div>
@@ -177,9 +177,9 @@
                                              target="_blank">Claire Luvcat</a>
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
-    </section>
+    </div>
 </main>
 <footer>
     <?

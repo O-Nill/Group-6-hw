@@ -26,12 +26,12 @@
 </head>
 <body>
 <header>
-    <section class="flex_menu">
+    <div class="flex_menu">
         <div class="menu_item"><a href="index.php">Главная</a></div>
         <div class="menu_item"><a href="task.php">Задача PHP</a></div>
         <div class="menu_item"><a href="arrays.php">Массивы</a></div>
         <div class="menu_item"><a href="images/fibonacci.png">Фибоначчи</a></div>
-    </section>
+    </div>
     <div class="flex_menu">
         <div class="authorization_item"><a href="registration.php">Форма авторизиции</a></div>
     </div>
@@ -63,7 +63,7 @@
 ?>
 <form method="post">
     <p>
-        <textarea name="mail_area" cols="60", rows="10", placeholder="Текст не введен!"></textarea>
+        <textarea name="mail_area" cols="60" rows="10" placeholder="Текст не введен!"></textarea>
     </p>
     <p>
         <button type="submit">Отправить</button>

@@ -78,6 +78,9 @@ p{
 .text{
     text-align: center;
 }
+img{
+    width: 100%;
+}
 .img{
     height: 85%;
     background-repeat: no-repeat;

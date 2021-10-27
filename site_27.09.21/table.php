@@ -26,12 +26,12 @@
 </head>
 <body>
 <header>
-    <section class="flex_menu">
+    <div class="flex_menu">
         <!--<a href="index.html"><h1>Главная</h1></a>
         <a href="images/screen.png"><h1>Скрин</h1></a>-->
         <div class="menu_item"><a href="index.php">Главная</a></div>
         <div class="menu_item"><a href="images/screen.png">Скрин</a></div>
-    </section>
+    </div>
 </header>
 <main>
     <table class="myTable">
@@ -93,25 +93,25 @@
                 <div class="leftPart"><div class="num">21</div>44,956</div>
                 <div class="rightPart"><a href="https://ru.wikipedia.org/wiki/Скандий"
                                           target="_blank" title="Скандий">Sc</a></div>
-                <p align="right">Скандий</p>
+                <p class="alignRight">Скандий</p>
             </td>
             <td class="td2">
                 <div class="leftPart"><div class="num">22</div>47,90</div>
                 <div class="rightPart"><a href="https://ru.wikipedia.org/wiki/Титан_(элемент)"
                                           target="_blank" title="Титан">Ti</a></div>
-                <p align="right">Титан</p>
+                <p class="alignRight">Титан</p>
             </td>
             <td class="td2">
                 <div class="leftPart"><div class="num">23</div>50,942</div>
                 <div class="rightPart"><a href="https://ru.wikipedia.org/wiki/Ванадий"
                                           target="_blank" title="Ванадий">V</a></div>
-                <p align="right">Ванадий</p>
+                <p class="alignRight">Ванадий</p>
             </td>
             <td class="td2">
                 <div class="leftPart"><div class="num">24</div>51,996</div>
                 <div class="rightPart"><a href="https://ru.wikipedia.org/wiki/Хром"
                                           target="_blank" title="Хром">Cr</a></div>
-                <p align="right">Хром</p>
+                <p class="alignRight">Хром</p>
             </td>
         </tr>
         <tr>

@@ -42,6 +42,9 @@ a{
     font-size: 200%;
     text-decoration: none
 }
+.alignRight{
+    text-align: right;
+}
 p{
     margin-top: 16%;
     font-weight: bold;

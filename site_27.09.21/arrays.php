@@ -26,12 +26,12 @@
 </head>
 <body>
 <header>
-    <section class="flex_menu">
+    <div class="flex_menu">
         <!--<a href="table.html"><h1>Таблица</h1></a>
         <a href="images/my_view.png"><h1>Скрин</h1></a>-->
         <div class="menu_item"><a href="index.php">Главная</a></div>
         <div class="menu_item"><a href="table.php">Таблица</a></div>
-    </section>
+    </div>
 </header>
 <main>
     <h1>Задание №1.</h1>

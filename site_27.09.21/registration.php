@@ -26,68 +26,35 @@
 </head>
 <body>
 <header>
-    <section class="flex_menu">
+    <div class="flex_menu">
         <div class="menu_item"><a href="index.php">Главная</a></div>
         <div class="menu_item"><a href="task.php">Задача PHP</a></div>
         <div class="menu_item"><a href="arrays.php">Массивы</a></div>
         <div class="menu_item"><a href="images/fibonacci.png">Фибоначчи</a></div>
-    </section>
+    </div>
     <div class="flex_menu">
         <div class="authorization_item"><a href="registration.php">Форма авторизиции</a></div>
     </div>
 </header>
 <?
-    $hostname = 'localhost'; // ВАЖНО
-    $username = 'Max'; // Введите ваши данные для подключения к БД
-    $password = '0000';
-    $dbname = 'authorization_db'; // Создайте БД - authorization_db, либо впишите свою БД и
-        // импортируйте таблицу authorization.sql в PHPMyAdmin
-    $db_connect = mysqli_connect($hostname, $username, $password, $dbname);
-    mysqli_set_charset($db_connect, 'utf8');
+    require 'scripts/regDB.php';
+    $regDB = new regDB('localhost', 'Max', '0000', 'authorization_db');
+?>
 
-    function correct_data($db_connect, $login, $password)
-    {
-        // $pass - tо что записываем в файл $filename
-        // $pass = "$login, ".md5($password).', ';
-        /*if (file_exists($filename)) {
-            $pass = file_get_contents($filename);
-        } else {
-            file_put_contents($filename, '');
-        }
-        $var_pass = explode(', ', $pass);*/
-        $select = mysqli_query($db_connect, "SELECT * FROM `authorization`");
-        $arr_select = mysqli_fetch_all($select, MYSQLI_ASSOC);
-        $log = 0;
-        foreach ($arr_select as $value) {
-            if ($value['login'] == $login && $value['password'] == md5($password)) {
-                $log = 1;
-            }
-        }
-        /*for ($i = 0; $i < count($var_pass) - 1; $i += 2) {
-            if ($var_pass[$i] == $login && $var_pass[$i + 1] == md5($password)) {
-                $log = 1;
-            }
-        }*/
-        return $log;
-    }
+<?
     $links = '';
-    //$pass = '';
-    //$filename = './pass.txt';
     if(count($_POST)>0) {
         $login = trim($_POST['login']);
         $password = trim($_POST['password']);
-        if (!($login == '' || $password == '') && $_POST['button']=='1' && !correct_data($db_connect, $login, $password)) { //pass filename
+        $correct_data = $regDB->correct_data($login, $password);
+        if (!($login == '' || $password == '') && $_POST['button']=='1' && !$correct_data) {
             echo "<p>Данные зарегестрированы!</p>";
-            $md_pass = md5($password);
-            $insert = mysqli_query($db_connect,
-                "INSERT INTO `authorization`(`user_id`, `login`, `password`) VALUES (Null, '$login', '$md_pass');");
+            $insert = $regDB->addUser($login, $password);
             if (!$insert) {
                 echo "<p>Ошибка внесения данных в БД!</p>";
             }
-           /* $pass = "$login, ".md5($password).', ';
-            file_put_contents($filename, $pass, FILE_APPEND);*/
         }
-        elseif($_POST['button']=='1' && correct_data($db_connect, $login, $password)){//pass filename
+        elseif($_POST['button']=='1' && $correct_data){
             echo "<p>Такой пользователь <br>уже существует!</p>";
         }
         if($login == '' || $password == '')
@@ -95,9 +62,8 @@
             echo "<p>Не заполнен пароль <br>или логин!</p>";
         }
         else{
-            $log = correct_data($db_connect, $login, $password);//pass filename
             if ($_POST['button']=='0') {
-                if ($log) {
+                if ($correct_data) {
                     if (isset($_SESSION['id'])){
                         if ($_SESSION['id']==1)
                             echo '<p>Последняя посещенная <br>страница - Отправка отзыва</p>';
@@ -111,7 +77,6 @@
                         "<a href='arrays.php?id=3'><p>Массивы</p></a>";
                     /*header( 'Refresh: 0; url=/mail.php' );*/
                     file_put_contents('./login.txt', $login);
-                    /*echo "<p>Привет, " . $login . "!</p>";*/
                 } else
                     echo "<p>Неверный логин<br> или пароль!</p>";
             }
@@ -123,16 +88,12 @@
 ?>
 <form method="post">
     <p>
-        <!--<label for="login">Логин </label><select name="login">
-            <option>Tom</option>
-            <option>Igor</option>
-        </select>-->
         <label for="login">Логин </label>
-        <input type="text" name="login">
+        <input type="text" name="login" id="login">
     </p>
     <p>
         <label for="password">Пароль </label>
-        <input type="text" name="password">
+        <input type="text" name="password" id="password">
     </p>
     <p>
         <button name="button" value="1" type="submit">Регистрация</button>
